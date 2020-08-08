@@ -11,5 +11,8 @@
   },
   "plugins": [
     "react-hooks"
-  ]
+  ],
+  "rules": {
+    "react/prop-types": "warn"
+  }
 }

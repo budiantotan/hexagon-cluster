@@ -25,7 +25,7 @@ router.post('/initiate', async (req, res, next) => {
     const body = await initiateSchema.validate(req.body);
     const result = await initiateCluster(body.name);
     res.json({
-      message: `Cluster created with ${result.name} as initital hexagon`,
+      result: `Cluster created with ${result.name} as initital hexagon`,
     });
   } catch (err) {
     next(err);
@@ -39,7 +39,7 @@ router.post('/', async (req, res, next) => {
     const result = await createHexagon(body.name, body.targetName, body.side);
 
     res.json({
-      message: `Hexagon: ${result.name} created succesfully`,
+      result: `Hexagon: ${result.name} created succesfully`,
     });
   } catch (err) {
     next(err);
@@ -74,7 +74,7 @@ router.delete('/:name', async (req, res, next) => {
     const name = decodeURIComponent(req.params.name);
     const result = await deleteHegaxon(name);
 
-    res.json({ message: result });
+    res.json({ result });
   } catch (err) {
     next(err);
   }

@@ -33,7 +33,7 @@ const _getNeighboursByCoordinate = async ({ x, y, z }) => {
  * @returns {Hexagon} hexagon
  */
 const initiateCluster = async name => {
-  const exist = await Hexagon.exists({ name });
+  const exist = await Hexagon.exists({ x: 0, y: 0, z: 0 });
   if (exist) {
     throw Error('Cluster already initiated!');
   }

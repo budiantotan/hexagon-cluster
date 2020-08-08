@@ -19,12 +19,6 @@ const ActionGetHexagon = () => {
     if (!state.loading && state.error) {
       toast.error(state.error.message);
     }
-
-    if (!state.loading && state.value && state.value.success) {
-      toast.info(
-        `Hexagon ${state.value.result.name} has neighbour: ${state.value.result.neighbours}`
-      );
-    }
   }, [state]);
 
   return (
@@ -43,6 +37,15 @@ const ActionGetHexagon = () => {
       >
         {'Find'}
       </button>
+
+      {state.value &&
+        state.value.result &&
+        state.value.result.name &&
+        state.value.result.neighbours && (
+          <p className={styles.description}>
+            {`Hexagon ${state.value.result.name} has neighbour: ${state.value.result.neighbours}`}
+          </p>
+        )}
     </div>
   );
 };

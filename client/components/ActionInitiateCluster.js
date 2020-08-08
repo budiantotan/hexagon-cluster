@@ -3,9 +3,11 @@ import { useAsyncFn } from 'react-use';
 import { callPost } from '../common/fetcher';
 import styles from '../styles/Controls.module.css';
 import { toast } from 'react-toastify';
+import { useRenderGraph } from '../hooks/useRenderGraph';
 
 const ActionInitiateCluster = () => {
   const [name, setName] = useState();
+  const { renderGraph } = useRenderGraph();
 
   const [state, fetch] = useAsyncFn(async () => {
     return await callPost('/api/hexagon/initiate', { name });
@@ -22,6 +24,7 @@ const ActionInitiateCluster = () => {
 
     if (!state.loading && state.value && state.value.success) {
       toast.success(state.value.result);
+      renderGraph();
     }
   }, [state]);
 

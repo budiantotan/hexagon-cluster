@@ -1,12 +1,9 @@
 import React from 'react';
-import { useAsyncFn } from 'react-use';
-import { callGet } from '../common/fetcher';
 import styles from '../styles/Controls.module.css';
+import { useRenderGraph } from '../hooks/useRenderGraph';
 
 const ActionRenderGraph = () => {
-  const [state, fetch] = useAsyncFn(async () => {
-    return await callGet('/api/hexagon');
-  }, []);
+  const { loading, renderGraph } = useRenderGraph();
 
   return (
     <div className={styles.sections}>
@@ -16,8 +13,8 @@ const ActionRenderGraph = () => {
       </p>
       <button
         className={styles.button}
-        onClick={fetch}
-        disabled={state.loading}
+        onClick={renderGraph}
+        disabled={loading}
       >
         {'Go!'}
       </button>

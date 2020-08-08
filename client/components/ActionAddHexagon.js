@@ -3,11 +3,13 @@ import { useAsyncFn } from 'react-use';
 import { toast } from 'react-toastify';
 import { callPost } from '../common/fetcher';
 import styles from '../styles/Controls.module.css';
+import { useRenderGraph } from '../hooks/useRenderGraph';
 
 const ActionAddHexagon = () => {
   const [name, setName] = useState();
   const [targetName, setTargetName] = useState();
   const [side, setSide] = useState();
+  const { renderGraph } = useRenderGraph();
 
   const [state, fetch] = useAsyncFn(async () => {
     return await callPost('/api/hexagon', {
@@ -24,6 +26,7 @@ const ActionAddHexagon = () => {
 
     if (!state.loading && state.value && state.value.success) {
       toast.success(state.value.result);
+      renderGraph();
     }
   }, [state]);
 

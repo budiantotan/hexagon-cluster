@@ -3,9 +3,11 @@ import { useAsyncFn } from 'react-use';
 import { callDelete } from '../common/fetcher';
 import styles from '../styles/Controls.module.css';
 import { toast } from 'react-toastify';
+import { useRenderGraph } from '../hooks/useRenderGraph';
 
 const ActionDeleteHexagon = () => {
   const [name, setName] = useState();
+  const { renderGraph } = useRenderGraph();
 
   const [state, fetch] = useAsyncFn(async () => {
     return await callDelete(`/api/hexagon/${decodeURIComponent(name)}`);
@@ -22,6 +24,7 @@ const ActionDeleteHexagon = () => {
 
     if (!state.loading && state.value && state.value.success) {
       toast.success(state.value.result);
+      renderGraph();
     }
   }, [state]);
 

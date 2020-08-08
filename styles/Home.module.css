@@ -19,6 +19,8 @@
   max-width: 250px;
   min-width: 250px;
   flex-grow: 1;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 .rightContainer {
@@ -26,4 +28,7 @@
   padding: 16px;
   display: flex;
   flex-grow: 1;
+  max-height: 100vh;
+  overflow: auto;
+  max-width: calc(100vw - 250px);
 }

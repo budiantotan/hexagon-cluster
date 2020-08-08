@@ -1,0 +1,49 @@
+.container {
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.actionContainer {
+  margin-bottom: 24px;
+}
+
+.button {
+  background-color: #f8f9fa;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  display: inline-block;
+  margin-right: 12px;
+  min-width: 50px;
+}
+
+.button:hover {
+  background-color: #e2e6ea;
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #dae0e5;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.drawBox {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+
+.drawBox use + text {
+  display: none;
+}
+
+.drawBox use + text:hover {
+  display: inherit;
+}
+
+.drawBox use:hover + text {
+  display: inherit;
+}

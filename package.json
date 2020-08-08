@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "nodemon --inspect index.js",
     "build": "next build",
-    "start": "next start",
+    "start": "node start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "engines": {
+    "yarn": "1.19.x"
   },
   "husky": {
     "hooks": {

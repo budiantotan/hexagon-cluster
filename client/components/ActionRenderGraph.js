@@ -8,7 +8,6 @@ const ActionRenderGraph = () => {
     return await callGet('/api/hexagon');
   }, []);
 
-  console.log(state);
   return (
     <div className={styles.sections}>
       <h1 className={styles.title}>{'Render graph'}</h1>

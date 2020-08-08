@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAsyncFn } from 'react-use';
 import { callPost } from '../common/fetcher';
 import styles from '../styles/Controls.module.css';
+import { toast } from 'react-toastify';
 
 const ActionInitiateCluster = () => {
   const [name, setName] = useState();
@@ -14,7 +15,16 @@ const ActionInitiateCluster = () => {
     setName(event.target.value);
   };
 
-  console.log(state);
+  useEffect(() => {
+    if (!state.loading && state.error) {
+      toast.error(state.error.message);
+    }
+
+    if (!state.loading && state.value && state.value.success) {
+      toast.success(state.value.result);
+    }
+  }, [state]);
+
   return (
     <div className={styles.sections}>
       <h1 className={styles.title}>{'Initiate cluster'}</h1>

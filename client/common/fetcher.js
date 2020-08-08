@@ -17,11 +17,7 @@ export const callGet = async path => {
   } catch (err) {
     const message =
       err && err.response && err.response.data && err.response.data.message;
-
-    return {
-      success: false,
-      message: message || 'Failed to call API',
-    };
+    throw Error(message || 'Failed to call API');
   }
 };
 
@@ -33,14 +29,9 @@ export const callPost = async (path, payload) => {
       result: res.data.result,
     };
   } catch (err) {
-    console.error(err.response);
     const message =
       err && err.response && err.response.data && err.response.data.message;
-
-    return {
-      success: false,
-      message: message || 'Failed to call API',
-    };
+    throw Error(message || 'Failed to call API');
   }
 };
 
@@ -54,10 +45,6 @@ export const callDelete = async path => {
   } catch (err) {
     const message =
       err && err.response && err.response.data && err.response.data.message;
-
-    return {
-      success: false,
-      message: message || 'Failed to call API',
-    };
+    throw Error(message || 'Failed to call API');
   }
 };

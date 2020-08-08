@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAsyncFn } from 'react-use';
+import { toast } from 'react-toastify';
 import { callPost } from '../common/fetcher';
 import styles from '../styles/Controls.module.css';
 
@@ -16,6 +17,16 @@ const ActionAddHexagon = () => {
     });
   }, [name, targetName, side]);
 
+  useEffect(() => {
+    if (!state.loading && state.error) {
+      toast.error(state.error.message);
+    }
+
+    if (!state.loading && state.value && state.value.success) {
+      toast.success(state.value.result);
+    }
+  }, [state]);
+
   const handleBlur = event => {
     const fieldName = event.target.name;
     const value = event.target.value;
@@ -28,8 +39,6 @@ const ActionAddHexagon = () => {
       setSide(Number(value));
     }
   };
-
-  console.log(state);
 
   return (
     <div className={styles.sections}>

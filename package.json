@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon --inspect index.js",
     "build": "next build",
-    "start": "node start",
+    "start": "node index.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "engines": {
